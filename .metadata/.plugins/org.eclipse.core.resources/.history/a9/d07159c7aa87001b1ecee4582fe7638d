@@ -1,0 +1,12 @@
+package album.model;
+
+import org.springframework.stereotype.Component;
+
+//AlbumDao myAlbumDao = new AlbumDao();
+@Component("myAlbumDao")
+public class AlbumDao {
+	
+	public AlbumDao() {
+		System.out.println("AlbumDao()");
+	}
+}

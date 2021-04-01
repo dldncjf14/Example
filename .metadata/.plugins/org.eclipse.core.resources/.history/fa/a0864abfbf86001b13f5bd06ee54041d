@@ -1,0 +1,40 @@
+package com.spring.ex.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class PDao {
+
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	private String dbId = "jspid";
+	private String dbPw = "jsppw";
+	private Connection conn = null;
+	private ResultSet rs = null;
+	private PreparedStatement ps = null;
+	
+	private PDao() {
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, dbId, dbPw);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static PDao instance = null;
+	
+	static PDao getInstance() {
+		
+		if(instance==null) {
+			instance =new PDao();
+		}
+		
+		return instance;
+	}
+}

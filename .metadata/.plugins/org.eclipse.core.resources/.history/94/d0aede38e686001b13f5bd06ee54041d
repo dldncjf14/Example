@@ -1,0 +1,6 @@
+package com.spring.ex.Dao;
+
+public class FBDao {
+	private String driver = "oracle.driver.jdbc.OracleDriver";
+	private Stirng url = "jdbc:oracle:thin:@localhost:1521:orcl";
+}

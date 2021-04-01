@@ -1,0 +1,28 @@
+package ex.am.ple1;
+
+public class CircleImpl implements Circle{
+
+	Shape Pointx;
+	int x;
+	int y;
+	int radius;
+	
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String make() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

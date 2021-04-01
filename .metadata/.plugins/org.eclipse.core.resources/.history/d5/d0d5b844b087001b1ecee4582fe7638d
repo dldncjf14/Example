@@ -1,0 +1,28 @@
+package album.model;
+
+import java.util.ArrayList;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+//AlbumDao myAlbumDao = new AlbumDao();
+@Component("myAlbumDao")
+public class AlbumDao {
+	
+	@Autowired
+	SqlSessionTemplate sqlSessionTemplate ; //~root-context.xml
+	
+	public AlbumDao() {
+		System.out.println("AlbumDao()");
+		
+		
+	}
+
+	public ArrayList<AlbumBean> getAlbumList() {
+		
+		ArrayList<AlbumBean> lists = new ArrayList<AlbumBean>();
+		sqlSessionTemplate.selectList("myAlbum");
+		return lists;
+	}
+}

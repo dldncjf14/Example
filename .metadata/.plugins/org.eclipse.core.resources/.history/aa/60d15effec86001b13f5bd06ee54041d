@@ -1,0 +1,16 @@
+package com.spring.ex.commmand;
+
+import java.sql.SQLException;
+
+import org.springframework.ui.Model;
+
+import com.spring.ex.command.command;
+
+public class FContentCommand implements command {
+
+	@Override
+	public void execute(Model model) throws SQLException {
+		
+	}
+
+}

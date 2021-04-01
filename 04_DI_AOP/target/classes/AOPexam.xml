@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+	
+<!-- OrderImple myorder = new OrderImpl(); -->
+<bean id="myorder" class="com.spring.sample3.OrderImpl"></bean>
+<bean id="myboard" class="com.spring.sample3.BoardImpl"></bean>
+
+<bean id="loginAdvice" class="com.spring.sample3.Login"></bean>
+<bean id="logoutAdvice" class="com.spring.sample3.Logout"></bean>
+<bean id="dao" class="com.spring.sample3.DAO"></bean>
+<bean id="hello" class="com.spring.sample3.Hello"></bean>
+
+<aop:config>
+	<aop:aspect ref="loginAdvice">
+		<aop:before method="login" pointcut="execution(* com.spring.sample3.OrderImpl.*()"/>
+	</aop:aspect>
+</aop:config>
+</beans>

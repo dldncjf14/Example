@@ -1,0 +1,26 @@
+package com.spring.ex.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.ex.command.PWriteCommand;
+
+@Controller
+public class PController {
+	
+	@RequestMapping(value = "/form")
+	public String form() {
+		
+		return "form";
+	}
+	
+	@RequestMapping(value = "/write")
+	public String write(HttpServletRequest request) {
+		
+		PWriteCommand command = new PWriteCommand();
+		
+		return "write";
+	}
+}

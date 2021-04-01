@@ -1,0 +1,24 @@
+package com.spring.ex.dao;
+
+public class PDao {
+
+	private String driver = "oracle.driver.jdbc.OracleDriver";
+	private String url = "jdbc.oracle.";
+	private String dbId = "jspid";
+	private String dbPw = "jsppw";
+	
+	private PDao() {
+		
+	}
+	
+	static PDao instance = null;
+	
+	static PDao getInstance() {
+		
+		if(instance==null) {
+			instance =new PDao();
+		}
+		
+		return instance;
+	}
+}

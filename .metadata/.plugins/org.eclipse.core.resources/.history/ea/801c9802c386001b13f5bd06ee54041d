@@ -1,0 +1,65 @@
+package com.spring.ex.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.spring.ex.dto.PDto;
+
+public class PDao {
+
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	private String dbId = "jspid";
+	private String dbPw = "jsppw";
+	private Connection conn = null;
+	private ResultSet rs = null;
+	private PreparedStatement ps = null;
+	private int cnt = -1;
+	
+	private PDao() {
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, dbId, dbPw);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static PDao instance = null;
+	
+	public static PDao getInstance() {
+		
+		if(instance==null) {
+			instance =new PDao();
+		}
+		
+		return instance;
+	}
+	
+	public void write(String id, String name, String age) throws SQLException {
+		String sql = "insert into person values(person_seq.nextval,?,?,?)";
+		
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.setString(2, name);
+		ps.setString(3, age);
+		
+		cnt = ps.executeUpdate();
+		
+		fncls();
+	}
+
+	private void fncls() throws SQLException {
+		if(rs!=null) {
+			rs.close();
+		}
+		if(ps!=null) {
+			ps.close();
+		}
+	}
+}

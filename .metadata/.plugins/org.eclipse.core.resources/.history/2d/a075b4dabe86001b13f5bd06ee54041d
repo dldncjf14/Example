@@ -1,0 +1,14 @@
+package com.spring.ex.command;
+
+import java.util.Map;
+
+import org.springframework.ui.Model;
+
+public class PWriteCommand implements PCommand{
+
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap(); //asMap : data를 map 형태로 변경
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.spring.ex.dao;
+
+public class Pdao {
+
+	private Pdao() {
+		
+	}
+	
+	static Pdao instance = null;
+	
+	static Pdao getInstance() {
+		
+		if(instance==null) {
+			instance =new Pdao();
+		}
+		
+		return instance;
+	}
+}

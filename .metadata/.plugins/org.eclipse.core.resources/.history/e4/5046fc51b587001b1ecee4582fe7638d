@@ -1,0 +1,42 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.springframework.web.servlet.ModelAndView"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="./../common/common.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AlbumList</title>
+</head>
+<body>
+<h1>상품 리스트 화면(레코드갯수: )</h1>
+<table border="1">
+	<tr>
+		<td colspan="7" align="right">
+			<input type="button" value="추가">
+		</td>
+	</tr>
+	<tr>
+		<td>번호</td>
+		<td>노래제목</td>
+		<td>가수명</td>
+		<td>가격</td>
+		<td>출간일</td>
+		<td>삭제</td>
+		<td>수정</td>
+	</tr>
+	<c:forEach var="album" items="${albumLists }">
+	<tr>
+		<td>${album.num }</td>
+		<td><c:out value="${album.title }"></c:out> </td>
+		<td>${album.singer }</td>
+		<td>${album.price }</td>
+		<td>${album.day }</td>
+		<td><a>삭제</a></td>
+		<td><input type="button" value="수정"></td>
+	</tr>
+	</c:forEach>
+</table>
+</body>
+</html>

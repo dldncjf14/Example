@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<bean id="myorder" class="com.spring.ex5.OrderImpl" /> <!-- ex5.OrderImpl 클래스의 객체생성 -->
+	<bean id="myboard" class="com.spring.ex5.BoardImpl" />	
+		
+	<bean id="loginAdvice" class="com.spring.ex5.Login" />
+	<bean id="logoutAdvice" class="com.spring.ex5.Logout" />
+	<bean id="daoAdvice" class="com.spring.ex5.DAO" />
+	<bean id="helloAdvice" class="com.spring.ex5.Hello" />
+	
+	<!-- AOP 핵심 기능을 로드 할 때 같이 로드 할 코드를 전,  후로 입력 -->
+	<!-- Order -->
+	
+	<aop:config> 
+		<aop:aspect ref="loginAdvice" order="7"> 
+			<aop:before method="login"
+				pointcut="execution(* com.spring.ex5.OrderImpl.order())" /> <!-- IoC (Inversion of Control) : 제어 역전 -->
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config> 
+		<aop:aspect ref="helloAdvice" order="6"> 
+			<aop:before method="hello"
+				pointcut="execution(* com.spring.ex5.OrderImpl.order())" /> <!-- IoC (Inversion of Control) : 제어 역전 -->
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="daoAdvice" order="2">
+			<aop:after method="dao"
+				pointcut="execution(* com.spring.ex5.OrderImpl.order())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="logoutAdvice" order="1">
+			<aop:after method="logout"
+				pointcut="execution(* com.spring.ex5.OrderImpl.order())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- board -->
+	
+	<aop:config> 
+		<aop:aspect ref="loginAdvice"> 
+			<aop:before method="login"
+				pointcut="execution(* com.spring.ex5.BoardImpl.board())" /> <!-- IoC (Inversion of Control) : 제어 역전 -->
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config> 
+		<aop:aspect ref="helloAdvice"> 
+			<aop:before method="hello"
+				pointcut="execution(* com.spring.ex5.BoardImpl.board())" /> <!-- IoC (Inversion of Control) : 제어 역전 -->
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="daoAdvice" order="2">
+			<aop:after method="dao"
+				pointcut="execution(* com.spring.ex5.BoardImpl.board())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="logoutAdvice" order="1">
+			<aop:after method="logout"
+				pointcut="execution(* com.spring.ex5.BoardImpl.board())"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

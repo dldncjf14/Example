@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<bean id="mystudent" class="com.spring.ex6.StudentImpl" p:name="조정석" p:age="10" p:classNum="5" p:gradeNum="3">
+	</bean>
+	<bean id="myworker" class="com.spring.ex6.WorkerImpl" p:name="윤아" p:age="35" p:job="개발자"/>
+	<bean id="helloAdvice" class="com.spring.ex6.Hello"/>
+	<bean id="startAdvice" class="com.spring.ex6.Start"/>
+	<bean id="endAdvice" class="com.spring.ex6.End"/>
+	<bean id="byeAdvice" class="com.spring.ex6.Goodbye"/>
+	
+	<!-- student -->
+	
+	<aop:config>
+		<aop:aspect ref="startAdvice">
+			<aop:before method="start" pointcut="execution(* com.spring.ex6.StudentImpl.getStudentInfo())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="helloAdvice">
+			<aop:before method="hello" pointcut="execution(* com.spring.ex6.StudentImpl.getStudentInfo())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="endAdvice">
+			<aop:after method="end" pointcut="execution(* com.spring.ex6.StudentImpl.getStudentInfo())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- worker -->
+	<aop:config>
+		<aop:aspect ref="startAdvice">
+			<aop:before method="start" pointcut="execution(* com.spring.ex6.WorkerImpl.getWorkerInfo())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="endAdvice" order="1">
+			<aop:after method="end" pointcut="execution(* com.spring.ex6.WorkerImpl.getWorkerInfo())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="byeAdvice" order="2">
+			<aop:after method="goodbye" pointcut="execution(* com.spring.ex6.WorkerImpl.getWorkerInfo())"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

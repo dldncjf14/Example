@@ -1,0 +1,13 @@
+package example3;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Person cons = new Consumer();
+		Car gra = new Granduer();
+		Car mor = new Morning();
+		cons.setName("Ã¶¼ö");
+		cons.setAge(30);
+		gra.drive();
+	}
+}

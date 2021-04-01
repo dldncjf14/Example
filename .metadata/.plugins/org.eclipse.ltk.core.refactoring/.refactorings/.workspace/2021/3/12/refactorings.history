@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;15_MVC_Football&apos; to &apos;15_MVC_Football_이우철&apos;" description="Rename resource &apos;15_MVC_Football&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/15_MVC_Football" name="15_MVC_Football_이우철" stamp="1615964637845" updateReferences="true"/>
+</session>

@@ -1,0 +1,10 @@
+package com.spring.ex;
+
+public class StudentBean {
+	private String name;
+	private String pw;
+	
+	public StudentBean() {
+		
+	}
+}

@@ -1,0 +1,15 @@
+package com.spring.ex.Dao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class FBDao {
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	private String user = "jspid";
+	private String pw = "jsppw";
+	private PreparedStatement ps = null;
+	private ResultSet rs = null;
+	private int cnt = -1;
+	
+}

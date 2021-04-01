@@ -1,0 +1,14 @@
+package com.spring.ex.command;
+
+import java.sql.SQLException;
+
+import org.springframework.ui.Model;
+
+public class PContentViewCommand implements PCommand{
+
+	@Override
+	public void execute(Model model) throws SQLException {
+		
+	}
+
+}

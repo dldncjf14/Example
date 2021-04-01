@@ -1,0 +1,24 @@
+package album.controller;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import album.model.AlbumBean;
+import album.model.AlbumDao;
+
+@Controller
+public class AlbumListController {
+	
+	private final String command = "/list.ab"; //final The value for annotation attribute RequestMapping 오류는 변하지 않는 값을 입력해야함
+	private final String getPage = "albumList";
+	private AlbumDao albumDao;
+	
+	@RequestMapping(value = command)
+	public String doAction() {
+		
+		ArrayList<AlbumBean> list = dao.list();
+		return getPage;
+	}
+}
