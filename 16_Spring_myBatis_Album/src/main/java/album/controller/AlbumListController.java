@@ -30,6 +30,7 @@ public class AlbumListController {
 		for(AlbumBean bean : lists) {
 			System.out.println(bean.getTitle());
 		}*/
+		//github-commit Test
 		ModelAndView mav = new ModelAndView(); //modelandview 로 데이터 이동
 		mav.addObject("albumLists", lists); //이동 할 객체
 		mav.setViewName(getPage); //이동 할 장소
